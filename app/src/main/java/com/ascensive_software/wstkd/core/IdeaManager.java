@@ -1,6 +1,8 @@
 package com.ascensive_software.wstkd.core;
 
-import android.widget.Toast;
+import com.ascensive_software.wstkd.WSTKDApplication;
+
+import java.util.ArrayList;
 
 /**
  * Created by edwin on 10/28/16.
@@ -9,79 +11,85 @@ import android.widget.Toast;
 public class IdeaManager {
 
     private RandomNumberGenerator randomNumberGenerator;
+    private WSTKDApplication application_;
 
-    public IdeaManager() {
+    public IdeaManager(WSTKDApplication application) {
         randomNumberGenerator = new RandomNumberGenerator();
+        application_ = application;
     }
 
-    public String GetNextIdea(){
-        int index = randomNumberGenerator.GetRandomNumber(builtInIdeas.length);
-        return builtInIdeas[index].title;
+    public String getNextIdea(){
+
+        String ideaString;
+        Data data = getData();
+
+        Idea[] ideas;
+
+        if(data.selectedCategory == CategoryEnum.All) {
+            int categoryIndex = randomNumberGenerator.generateRandomNumber(6);
+            ideas = dataCategoryMap_.get(categoryIndex);
+        } else {
+            int idx = data.selectedCategory.ordinal()-1;
+            ideas = dataCategoryMap_.get(idx);
+        }
+
+        int index = randomNumberGenerator.generateRandomNumber(ideas.length);
+        ideaString = ideas[index].title;
+
+        return  ideaString;
     }
 
-    public void SetCategory(CategoryEnum category) {
+    public void setCategory(CategoryEnum category) {
+        getData().selectedCategory = category;
+    }
+
+    public void resetToDefault() {
+        BuiltInIdeas builtInIdeas = new BuiltInIdeas();
+
+        Data data = new Data();
+        data.selectedCategory = CategoryEnum.All;
+        data.learnIdeas = builtInIdeas.getIdeas(CategoryEnum.Learn);
+        data.playIdeas = builtInIdeas.getIdeas(CategoryEnum.Play);
+        data.relaxIdeas = builtInIdeas.getIdeas(CategoryEnum.Relax);
+        data.loveIdeas = builtInIdeas.getIdeas(CategoryEnum.Love);
+        data.helpIdeas = builtInIdeas.getIdeas(CategoryEnum.Help);
+        data.othersIdeas = builtInIdeas.getIdeas(CategoryEnum.Others);
+
+        Storage storage = new Storage(application_);
+        storage.save(data);
+
+        data_ = data;
+    }
+
+    public void addNewIdea(String title, CategoryEnum category) {
         throw new UnsupportedOperationException();
     }
 
-    public void ResetToDefault() {
-        throw new UnsupportedOperationException();
+    private Data data_;
+    private Data getData() {
+        if(data_ == null) {
+            Storage storage = new Storage(application_);
+            data_ = storage.load();
+
+            if(data_ == null) {
+                resetToDefault();
+            }
+
+            createDataCategoryMap();
+        }
+
+        return data_;
     }
 
-    public void AddNewIdea(String title, CategoryEnum category) {
-        throw new UnsupportedOperationException();
+    private ArrayList<Idea[]> dataCategoryMap_;
+    private void createDataCategoryMap() {
+        dataCategoryMap_ = new ArrayList<>();
+        dataCategoryMap_.add(data_.learnIdeas);
+        dataCategoryMap_.add(data_.playIdeas);
+        dataCategoryMap_.add(data_.relaxIdeas);
+        dataCategoryMap_.add(data_.loveIdeas);
+        dataCategoryMap_.add(data_.helpIdeas);
+        dataCategoryMap_.add(data_.othersIdeas);
     }
-
-    private Idea builtInIdeas[] = {
-            new Idea(CategoryEnum.Learn, "Read a book"),
-            new Idea(CategoryEnum.Learn, "Learn a new song"),
-            new Idea(CategoryEnum.Learn, "Learn a magic trick"),
-            new Idea(CategoryEnum.Learn, "Learn a new dance move"),
-            new Idea(CategoryEnum.Learn, "Study Math"),
-            new Idea(CategoryEnum.Learn, "Study Science"),
-            new Idea(CategoryEnum.Learn, "Study History"),
-            new Idea(CategoryEnum.Learn, "Do a science project"),
-
-            new Idea(CategoryEnum.Play, "Do jumping jacks"),
-            new Idea(CategoryEnum.Play, "Play board games"),
-            new Idea(CategoryEnum.Play, "Ride a bike"),
-            new Idea(CategoryEnum.Play, "Play a ball game"),
-            new Idea(CategoryEnum.Play, "Play a game on the tablet"),
-            new Idea(CategoryEnum.Play, "Play video games"),
-            new Idea(CategoryEnum.Play, "Make paper airplanes"),
-            new Idea(CategoryEnum.Play, "Play sudoku"),
-            new Idea(CategoryEnum.Play, "Run laps in the backyard"),
-            new Idea(CategoryEnum.Play, "Draw a portrait of the person closest to you"),
-            new Idea(CategoryEnum.Play, "Play online games"),
-            new Idea(CategoryEnum.Play, "Draw anything"),
-            new Idea(CategoryEnum.Play, "Do coloring activities"),
-
-            new Idea(CategoryEnum.Relax, "Watch tv"),
-            new Idea(CategoryEnum.Relax, "Lie down and do nothing"),
-            new Idea(CategoryEnum.Relax, "Take a bath"),
-            new Idea(CategoryEnum.Relax, "Take a walk"),
-            new Idea(CategoryEnum.Relax, "Take funny selfies"),
-            new Idea(CategoryEnum.Relax, "Post a status update in social media"),
-            new Idea(CategoryEnum.Relax, "Eat a fruit"),
-            new Idea(CategoryEnum.Relax, "Eat a cookie"),
-            new Idea(CategoryEnum.Relax, "Make a wish list of things you want to do"),
-            new Idea(CategoryEnum.Relax, "Make a gift wish list"),
-            new Idea(CategoryEnum.Relax, "Count your money"),
-            new Idea(CategoryEnum.Relax, "Look at old pictures or albums"),
-            new Idea(CategoryEnum.Relax, "Watch shows online"),
-
-            new Idea(CategoryEnum.Help, "Sort your clothes by color"),
-            new Idea(CategoryEnum.Help, "Clean the living room"),
-            new Idea(CategoryEnum.Help, "Clean the bedroom"),
-            new Idea(CategoryEnum.Help, "Clean the bathroom"),
-            new Idea(CategoryEnum.Help, "Tend the garden"),
-
-            new Idea(CategoryEnum.Love, "Write a letter to a family member"),
-            new Idea(CategoryEnum.Love, "Write a letter to a friend"),
-            new Idea(CategoryEnum.Love, "Send a message to a friend"),
-            new Idea(CategoryEnum.Love, "Hug a loved one"),
-            new Idea(CategoryEnum.Love, "Give a loved one a hug"),
-            new Idea(CategoryEnum.Love, "Talk to a loved one about your day"),
-            new Idea(CategoryEnum.Love, "Make Christmas, Valentine's or Birthday cards"),
-    };
 }
 

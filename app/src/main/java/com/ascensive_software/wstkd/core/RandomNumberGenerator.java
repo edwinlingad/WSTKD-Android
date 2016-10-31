@@ -15,7 +15,7 @@ public class RandomNumberGenerator {
         random = new Random(new Date().getTime());
     }
 
-    public int GetRandomNumber(int max){
+    public int generateRandomNumber(int max){
         return random.nextInt(max);
     }
 }

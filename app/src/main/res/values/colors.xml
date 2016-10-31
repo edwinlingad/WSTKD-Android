@@ -2,6 +2,8 @@
 <resources>
     <color name="colorPrimary">#2D7727</color>
     <color name="colorPrimaryDark">#255C22</color>
-    <color name="colorAccent">#255C22</color>
+    <color name="colorAccent">#255c22</color>
     <color name="ideaColor">#00958f</color>
+    <color name="bottomSheetBg">#FAFAFA</color>
+    <color name="catColor">#E1003A</color>
 </resources>

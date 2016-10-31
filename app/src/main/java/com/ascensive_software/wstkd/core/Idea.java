@@ -1,10 +1,12 @@
 package com.ascensive_software.wstkd.core;
 
+import java.io.Serializable;
+
 /**
  * Created by edwin on 10/28/16.
  */
 
-public class Idea {
+public class Idea implements Serializable {
 
     public Idea(CategoryEnum category, String title) {
         this.title = title;

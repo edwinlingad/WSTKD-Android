@@ -5,4 +5,13 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="idea_text_margin_top">60dp</dimen>
+    <dimen name="idea_text_text_size">28sp</dimen>
+
+    <dimen name="bottom_sheet_height">320dp</dimen>
+    <dimen name="cat_size">80dp</dimen>
+    <dimen name="cat_y_distance">16dp</dimen>
+    <dimen name="cat_x_distance">32dp</dimen>
+    <dimen name="cat_image_size">64dp</dimen>
 </resources>

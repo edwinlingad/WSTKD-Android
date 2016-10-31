@@ -5,10 +5,11 @@ package com.ascensive_software.wstkd.core;
  */
 
 public enum CategoryEnum {
-    Others,
+    All,
     Learn,
     Play,
     Relax,
+    Love,
     Help,
-    Love
+    Others,
 }
