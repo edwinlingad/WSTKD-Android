@@ -33,7 +33,7 @@
             <!--android:layout_alignParentEnd="true" />-->
 
         <TextView
-            android:text="What should you do today?"
+            android:text="Tap for suggestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/idea_text_margin_top"
@@ -50,6 +50,15 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>
 
+        <com.google.android.gms.ads.AdView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/adView"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"/>
+
         <ImageButton
             android:id="@+id/category_button"
             android:layout_width="64dp"
@@ -59,19 +68,11 @@
             android:background="@null"
             app:srcCompat="@drawable/ic_all"
             android:tint="@color/colorAccent"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentTop="true"
             android:alpha="0.6"
-            android:layout_alignEnd="@+id/tv_idea" />
-
-        <com.google.android.gms.ads.AdView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/adView"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"/>
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/adView" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -83,28 +84,39 @@
         app:behavior_hideable="true"
         android:background="@color/bottomSheetBg">
 
-        <LinearLayout
-            android:id="@+id/cat_all"
-            android:orientation="vertical"
-            android:layout_width="@dimen/cat_size"
-            android:layout_height="@dimen/cat_size"
-            android:layout_marginTop="@dimen/cat_y_distance"
-            android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/cat_select_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Category"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:textColor="@color/catColor" />
 
-            <ImageView
-                android:layout_width="@dimen/cat_image_size"
-                android:layout_height="@dimen/cat_image_size"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_all"
-                android:tint="@color/colorPrimary" />
+        <!--<LinearLayout-->
+            <!--android:id="@+id/cat_all"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="@dimen/cat_size"-->
+            <!--android:layout_height="@dimen/cat_size"-->
+            <!--android:layout_marginTop="@dimen/cat_y_distance"-->
+            <!--android:layout_centerHorizontal="true">-->
 
-            <TextView
-                android:text="@string/cat_all"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="@color/catColor"/>
-        </LinearLayout>
+            <!--<ImageView-->
+                <!--android:layout_width="@dimen/cat_image_size"-->
+                <!--android:layout_height="@dimen/cat_image_size"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--app:srcCompat="@drawable/ic_all"-->
+                <!--android:tint="@color/colorPrimary" />-->
+
+            <!--<TextView-->
+                <!--android:text="@string/cat_all"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="@color/catColor"/>-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/cat_play"
@@ -113,7 +125,7 @@
             android:layout_height="@dimen/cat_size"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/cat_y_distance"
-            android:layout_below="@+id/cat_all">
+            android:layout_below="@+id/cat_select_text">
 
             <ImageView
                 android:layout_width="@dimen/cat_image_size"
@@ -227,7 +239,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/cat_others"
+            android:id="@+id/cat_all"
             android:orientation="vertical"
             android:layout_width="@dimen/cat_size"
             android:layout_height="@dimen/cat_size"
@@ -239,11 +251,11 @@
                 android:layout_width="@dimen/cat_image_size"
                 android:layout_height="@dimen/cat_image_size"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_others"
+                app:srcCompat="@drawable/ic_all"
                 android:tint="@color/colorPrimary" />
 
             <TextView
-                android:text="@string/cat_others"
+                android:text="@string/cat_all"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"

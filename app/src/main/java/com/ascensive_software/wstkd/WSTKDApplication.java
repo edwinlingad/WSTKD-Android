@@ -28,7 +28,6 @@ public class WSTKDApplication extends Application {
         idToCategoryMap_.put(R.id.cat_relax, CategoryEnum.Relax);
         idToCategoryMap_.put(R.id.cat_love, CategoryEnum.Love);
         idToCategoryMap_.put(R.id.cat_help, CategoryEnum.Help);
-        idToCategoryMap_.put(R.id.cat_others, CategoryEnum.Others);
     }
 
     private void initIdToIconMap() {
@@ -39,7 +38,6 @@ public class WSTKDApplication extends Application {
         categoryToIconMap_.put(R.id.cat_relax, R.drawable.ic_relax);
         categoryToIconMap_.put(R.id.cat_love, R.drawable.ic_love);
         categoryToIconMap_.put(R.id.cat_help, R.drawable.ic_help);
-        categoryToIconMap_.put(R.id.cat_others, R.drawable.ic_others);
     }
 
     private int[] _catIds = {
@@ -49,7 +47,6 @@ public class WSTKDApplication extends Application {
             R.id.cat_relax,
             R.id.cat_love,
             R.id.cat_help,
-            R.id.cat_others
     };
     public int[] getCatIds() {
         return _catIds;
