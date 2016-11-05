@@ -1,5 +1,7 @@
 package com.ascensive_software.wstkd.core;
 
+import com.ascensive_software.wstkd.core.Enums.CategoryEnum;
+
 import java.io.Serializable;
 
 /**

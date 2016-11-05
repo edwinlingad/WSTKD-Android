@@ -2,7 +2,6 @@ package com.ascensive_software.wstkd;
 
 import android.graphics.Typeface;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ascensive_software.wstkd.core.CategoryEnum;
+import com.ascensive_software.wstkd.core.Enums.CategoryEnum;
 import com.ascensive_software.wstkd.core.IdeaManager;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -72,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         // category Button
         btnCategory = (ImageButton) findViewById(R.id.category_button);
+        btnCategory.setImageResource(getApp().getCategoryEnumToIconIdMap().get(ideaManager.getSelectedCategory_()));
         btnCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

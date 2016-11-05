@@ -9,7 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
@@ -26,7 +25,7 @@ public class Storage {
         context_ = context;
     }
 
-    public void save(Data data) {
+    public void save(SavedData data) {
         try {
             FileOutputStream fs = context_.openFileOutput(saveFileName_, Context.MODE_PRIVATE);
             ObjectOutputStream out = new ObjectOutputStream(fs);
@@ -41,11 +40,11 @@ public class Storage {
         }
     }
 
-    public Data load() {
+    public SavedData load() {
         try {
             FileInputStream fs = context_.openFileInput(saveFileName_);
             ObjectInputStream in = new ObjectInputStream(fs);
-            Data data = (Data)in.readObject();
+            SavedData data = (SavedData)in.readObject();
             in.close();
             fs.close();
             return data;
