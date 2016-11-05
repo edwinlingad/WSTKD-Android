@@ -20,18 +20,6 @@
             android:scaleType="centerCrop"
             android:layout_alignParentStart="true" />
 
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:clickable="true"-->
-            <!--app:fabSize="normal"-->
-            <!--app:srcCompat="@drawable/ic_lightbulb_outline_white_24dp"-->
-            <!--android:id="@+id/generate_idea"-->
-            <!--android:layout_marginEnd="24dp"-->
-            <!--android:layout_marginBottom="24dp"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:layout_alignParentEnd="true" />-->
-
         <TextView
             android:text="Tap for suggestion"
             android:layout_width="wrap_content"
@@ -94,29 +82,6 @@
             android:textSize="24sp"
             android:textStyle="normal|bold"
             android:textColor="@color/catColor" />
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/cat_all"-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_width="@dimen/cat_size"-->
-            <!--android:layout_height="@dimen/cat_size"-->
-            <!--android:layout_marginTop="@dimen/cat_y_distance"-->
-            <!--android:layout_centerHorizontal="true">-->
-
-            <!--<ImageView-->
-                <!--android:layout_width="@dimen/cat_image_size"-->
-                <!--android:layout_height="@dimen/cat_image_size"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--app:srcCompat="@drawable/ic_all"-->
-                <!--android:tint="@color/colorPrimary" />-->
-
-            <!--<TextView-->
-                <!--android:text="@string/cat_all"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textAlignment="center"-->
-                <!--android:textColor="@color/catColor"/>-->
-        <!--</LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/cat_play"

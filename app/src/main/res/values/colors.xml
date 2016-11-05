@@ -6,4 +6,6 @@
     <color name="ideaColor">#00958f</color>
     <color name="bottomSheetBg">#FAFAFA</color>
     <color name="catColor">#e1003a</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

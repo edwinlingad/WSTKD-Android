@@ -33,25 +33,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
+        decorView.setSystemUiVisibility(uiOptions);
+
+
         // IdeaManager
         ideaManager = getApp().getIdeaManager();
 
         // Bottom sheet
         RelativeLayout bottomSheetLayout = (RelativeLayout)findViewById(R.id.category_bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
-
-//        // FAB
-//        fabGenerateIdea = (FloatingActionButton) findViewById(R.id.generate_idea);
-//        fabGenerateIdea.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String idea = ideaManager.getNextIdea();
-//                tvIdea.setText(idea);
-//                tvIdea.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
-//
-//            }
-//        });
-//        fabGenerateIdea.setRippleColor(0);
 
         // background image
         ImageView backgroundImage = (ImageView)findViewById(R.id.background_image);
